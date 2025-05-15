@@ -1,4 +1,4 @@
-package dao.admin;
+package dao;
 
 import model.ConfiguracionSistema;
 import util.DBConnection;
