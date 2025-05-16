@@ -20,7 +20,7 @@ public class LoginController {
             System.out.println("Contraseña incorrecta");
             return;
         }
-
+        System.out.println("Bienvenido");
         usuario.redirect();
     }
 

@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/resources/log4j2.xml</file>
-            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/controllers/LoginController.java</file>
-            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/dao/CDDAO.java</file>
-            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/Main.java</file>
-            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/controllers/CDController.java</file>
+            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/dao/LibroDAO.java</file>
+            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/test/TestLibroController.java</file>
+            <file>file:/C:/Users/marlo/OneDrive/Documentos/NetBeansProjects/Mediateca-POO-fase1/src/test/TestPrestamoController.java</file>
         </group>
     </open-files>
 </project-private>

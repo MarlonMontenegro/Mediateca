@@ -11,6 +11,12 @@ public abstract class Usuario {
     public Usuario() {
     }
 
+    public Usuario(String usuario, String contrasena, RolUsuario rol) {
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.rol = rol;
+    }
+
     public Usuario(int id, String usuario, String contrasena, RolUsuario rol) {
         this.id = id;
         this.usuario = usuario;
