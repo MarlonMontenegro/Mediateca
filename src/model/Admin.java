@@ -1,5 +1,7 @@
 package model;
 
+import Visual.menu;
+
 public class Admin extends Usuario {
 
     public Admin(int id, String usuario, String contrasena, RolUsuario rol) {
@@ -12,6 +14,6 @@ public class Admin extends Usuario {
 
     @Override
     public void redirect() {
-        
+        new menu().setVisible(true);
     }
 }

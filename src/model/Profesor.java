@@ -1,5 +1,6 @@
 package model;
 
+import Visual.menuprofesor;
 
 public class Profesor extends Usuario {
 
@@ -13,6 +14,6 @@ public class Profesor extends Usuario {
 
     @Override
     public void redirect() {
-        //TODO: Agregar la vista
+        new menuprofesor().setVisible(true);
     }
 }
