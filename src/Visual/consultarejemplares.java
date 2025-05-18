@@ -139,9 +139,9 @@ public class consultarejemplares extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 80, 90, 40));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 600));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1220, 600));
 
-        setSize(new java.awt.Dimension(1086, 609));
+        setSize(new java.awt.Dimension(1087, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
