@@ -130,6 +130,8 @@ public class PrestamoDAO {
 
         return prestamos;
     }
+    
+
 
     private boolean superaLimitePrestamosActivos(int idUsuario) {
         String sqlPrestamos = "SELECT COUNT(*) FROM prestamo WHERE id_usuario = ? AND devuelto = FALSE";
@@ -183,9 +185,40 @@ public class PrestamoDAO {
 
         return false;
     }
+    
+public List<Prestamo> listarTodosLosPrestamosConMora() {
+    List<Prestamo> prestamosConMora = new ArrayList<>();
 
+    String sql = "SELECT * FROM prestamo WHERE mora_calculada > 0";
+
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            Prestamo p = new Prestamo();
+            p.setIdPrestamo(rs.getInt("id_prestamo"));
+            p.setIdUsuario(rs.getInt("id_usuario"));
+            p.setIdMaterial(rs.getString("id_material"));
+            p.setFechaPrestamo(rs.getDate("fecha_prestamo"));
+            p.setFechaDevolucionEsperada(rs.getDate("fecha_devolucion_esperada"));
+            p.setFechaDevolucionReal(rs.getDate("fecha_devolucion_real"));
+            p.setDiasMora(rs.getInt("dias_mora"));
+            p.setMoraCalculada(rs.getBigDecimal("mora_calculada"));
+            p.setDevuelto(rs.getBoolean("devuelto"));
+
+            prestamosConMora.add(p);
+        }
+
+        logger.info("Se listaron {} préstamos con mora.", prestamosConMora.size());
+
+    } catch (SQLException e) {
+        logger.error("Error al listar préstamos con mora: {}", e.getMessage(), e);
+    }
+
+    return prestamosConMora;
 }
-
+}
 
 
 

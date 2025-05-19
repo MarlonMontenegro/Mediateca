@@ -4,19 +4,24 @@
  */
 package Visual;
 
+import controllers.PrestamoController;
 import controllers.MaterialResumenController;
 import model.MaterialResumen;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import model.Prestamo;
+
+
 /**
  *
  * @author Benja
  */
 public class prestamos extends javax.swing.JFrame {
 
+    private final PrestamoController prestamoController = new PrestamoController();
+    private final MaterialResumenController materialController = new MaterialResumenController();
+
     
-    
-    private final MaterialResumenController controller = new MaterialResumenController();
 
     
     /**
@@ -29,7 +34,7 @@ public class prestamos extends javax.swing.JFrame {
     }
     
     private void cargarMateriales() {
-    List<MaterialResumen> materiales = controller.listarTodosLosMateriales();
+    List<MaterialResumen> materiales = materialController.listarTodosLosMateriales();
     
     String[] columnas = {"ID", "Título", "Unidades", "Tipo"};
     
@@ -62,17 +67,8 @@ public class prestamos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        label2 = new java.awt.Label();
-        label3 = new java.awt.Label();
-        label4 = new java.awt.Label();
-        label5 = new java.awt.Label();
-        label6 = new java.awt.Label();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,13 +100,13 @@ public class prestamos extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("REGISTRAR");
+        jButton2.setText("Prestar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 530, 110, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 530, 110, 40));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 255));
@@ -128,66 +124,20 @@ public class prestamos extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 530, 90, 40));
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 510, 40));
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 510, 40));
-
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 510, 40));
-
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 510, 40));
-
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 510, 40));
-
-        label2.setText("UNIDADES DISPO");
-        getContentPane().add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, -1, -1));
-
-        label3.setText("FECHA DE PRESTAMOS");
-        getContentPane().add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
-
-        label4.setText("ID MATERIAL");
-        getContentPane().add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
-
-        label5.setText("ID USUARIO");
-        getContentPane().add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
-
-        label6.setText("FECHA DE DEVOLUCION");
-        getContentPane().add(label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 600));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 970, 360));
 
         setSize(new java.awt.Dimension(1087, 607));
         setLocationRelativeTo(null);
@@ -205,29 +155,51 @@ public class prestamos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+         int fila = jTable2.getSelectedRow();
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    if (fila == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Selecciona un material para prestar.");
+        return;
+    }
+
+    // Obtener ID del material desde la tabla
+    String idMaterial = jTable2.getValueAt(fila, 0).toString();
+
+    // Pedir al usuario que ingrese su ID
+    String input = javax.swing.JOptionPane.showInputDialog(this, "Ingrese el ID del usuario:");
+
+    if (input == null || input.trim().isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "ID de usuario no ingresado.");
+        return;
+    }
+
+    try {
+        int idUsuario = Integer.parseInt(input.trim());
+
+        // Crear objeto préstamo
+        java.util.Date hoy = new java.util.Date();
+        Prestamo prestamo = new Prestamo();
+        prestamo.setIdUsuario(idUsuario);
+        prestamo.setIdMaterial(idMaterial);
+        prestamo.setFechaPrestamo(hoy);
+        prestamo.calcularFechaDevolucionEsperada();
+        prestamo.setDevuelto(false); // por defecto
+
+        // Llamar al controlador
+        boolean exito = prestamoController.crearPrestamo(prestamo);
+
+        if (exito) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Préstamo registrado correctamente.");
+            cargarMateriales(); // opcional, si deseas actualizar disponibilidad
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No se pudo registrar el préstamo. El usuario puede tener mora o ha alcanzado el límite.");
+        }
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "ID de usuario inválido.");
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,18 +272,9 @@ public class prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.Label label4;
-    private java.awt.Label label5;
-    private java.awt.Label label6;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

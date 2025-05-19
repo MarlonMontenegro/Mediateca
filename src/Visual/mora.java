@@ -4,43 +4,41 @@
  */
 package Visual;
 
-import controllers.MaterialResumenController;
-import model.MaterialResumen;
+import controllers.PrestamoController;
+import model.Prestamo;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+
 /**
  *
  * @author Benja
  */
 public class mora extends javax.swing.JFrame {
 
-    
-    
-    private final MaterialResumenController controller = new MaterialResumenController();
+    private final PrestamoController prestamoController = new PrestamoController();
 
-    
     /**
      * Creates new form menu
      */
     public mora() {
         initComponents();
-        cargarMateriales();
-
+        cargarTablaConMora();
     }
-    
-    private void cargarMateriales() {
-    List<MaterialResumen> materiales = controller.listarTodosLosMateriales();
-    
-    String[] columnas = {"ID", "Título", "Unidades", "Tipo"};
-    
+
+private void cargarTablaConMora() {
+    List<Prestamo> prestamos = prestamoController.listarTodosLosPrestamosConMora();
+
+    String[] columnas = {"ID Préstamo", "ID Usuario", "Material", "Fecha Préstamo", "Fecha Devolución", "Mora"};
     DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
-    for (MaterialResumen m : materiales) {
+    for (Prestamo p : prestamos) {
         modelo.addRow(new Object[]{
-            m.getCodigoIdentificacion(),
-            m.getTitulo(),
-            m.getUnidadesDisponibles(),
-            m.getTipo()
+            p.getIdPrestamo(),
+            p.getIdUsuario(),
+            p.getIdMaterial(),
+            p.getFechaPrestamo(),
+            p.getFechaDevolucionReal() != null ? p.getFechaDevolucionReal() : "Pendiente",
+            p.getMoraCalculada()
         });
     }
 
@@ -59,13 +57,10 @@ public class mora extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        label1 = new java.awt.Label();
         jLabel2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -95,21 +90,6 @@ public class mora extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 510, 40));
-
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("CONSULTAR");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 120, 40));
-
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 255));
         jLabel1.setText("CONSULTAR MORA");
@@ -128,7 +108,7 @@ public class mora extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 810, 440));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 810, 270));
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -139,28 +119,22 @@ public class mora extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 80, 90, 40));
-
-        label1.setText("ID DEL USUARIO");
-        getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 580, 90, 40));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1220, 600));
 
-        setSize(new java.awt.Dimension(1087, 607));
+        setSize(new java.awt.Dimension(1087, 651));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       loging loging = new loging ();
+        loging loging = new loging();
         loging.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        menu menu = new menu ();
+        menu menu = new menu();
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -217,7 +191,6 @@ public class mora extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -225,7 +198,5 @@ public class mora extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

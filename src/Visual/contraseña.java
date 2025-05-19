@@ -4,10 +4,9 @@
  */
 package Visual;
 
-import controllers.MaterialResumenController;
-import model.MaterialResumen;
-import javax.swing.table.DefaultTableModel;
-import java.util.List;
+import controllers.AdminController;
+
+
 /**
  *
  * @author Benja
@@ -15,8 +14,7 @@ import java.util.List;
 public class contraseña extends javax.swing.JFrame {
 
     
-    
-    private final MaterialResumenController controller = new MaterialResumenController();
+      private final AdminController adminController = new controllers.AdminController();
 
     
     /**
@@ -24,28 +22,9 @@ public class contraseña extends javax.swing.JFrame {
      */
     public contraseña() {
         initComponents();
-        cargarMateriales();
 
     }
     
-    private void cargarMateriales() {
-    List<MaterialResumen> materiales = controller.listarTodosLosMateriales();
-    
-    String[] columnas = {"ID", "Título", "Unidades", "Tipo"};
-    
-    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
-
-    for (MaterialResumen m : materiales) {
-        modelo.addRow(new Object[]{
-            m.getCodigoIdentificacion(),
-            m.getTitulo(),
-            m.getUnidadesDisponibles(),
-            m.getTipo()
-        });
-    }
-
-    jTable2.setModel(modelo);
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -195,21 +174,57 @@ public class contraseña extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
+    // Boton Guardar
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+             try {
+        // Obtener valores
+        int id = Integer.parseInt(jTextField5.getText().trim());
+        String nuevaClave = jTextField3.getText().trim();
+        String confirmarClave = jTextField6.getText().trim();
+
+        // Validaciones básicas
+        if (nuevaClave.isEmpty() || confirmarClave.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Los campos de contraseña no pueden estar vacíos.");
+            return;
+        }
+
+        if (!nuevaClave.equals(confirmarClave)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.");
+            return;
+        }
+
+        // Llamar al controlador
+        boolean resultado = adminController.cambiarContrasena(id, nuevaClave);
+
+        if (resultado) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Contraseña actualizada con éxito.");
+            // Limpiar campos si quieres
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No se pudo cambiar la contraseña. Verifica el ID.");
+        }
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.");
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage());
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments

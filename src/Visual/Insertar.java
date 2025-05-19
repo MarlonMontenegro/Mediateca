@@ -4,48 +4,25 @@
  */
 package Visual;
 
-import controllers.MaterialResumenController;
-import model.MaterialResumen;
-import javax.swing.table.DefaultTableModel;
-import java.util.List;
+import controllers.LibroController;
+import model.Libro;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Benja
  */
 public class Insertar extends javax.swing.JFrame {
 
-    
-    
-    private final MaterialResumenController controller = new MaterialResumenController();
+    private final LibroController libroController = new LibroController();
 
-    
     /**
      * Creates new form menu
      */
     public Insertar() {
         initComponents();
-        cargarMateriales();
 
     }
-    
-    private void cargarMateriales() {
-    List<MaterialResumen> materiales = controller.listarTodosLosMateriales();
-    
-    String[] columnas = {"ID", "Título", "Unidades", "Tipo"};
-    
-    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
-
-    for (MaterialResumen m : materiales) {
-        modelo.addRow(new Object[]{
-            m.getCodigoIdentificacion(),
-            m.getTitulo(),
-            m.getUnidadesDisponibles(),
-            m.getTipo()
-        });
-    }
-
-    jTable2.setModel(modelo);
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,15 +39,23 @@ public class Insertar extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        label2 = new java.awt.Label();
-        label3 = new java.awt.Label();
-        label4 = new java.awt.Label();
-        label5 = new java.awt.Label();
-        jLabel2 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,71 +110,97 @@ public class Insertar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 90, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 1220, 600));
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("ID");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
+
+        jLabel4.setText("Titulo");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+
+        jLabel5.setText("Unidades Disponibles");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, -1, -1));
+
+        jLabel6.setText("Autor");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+
+        jLabel7.setText("Numero de paginas");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, -1, -1));
+
+        jLabel8.setText("ISBN");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
+
+        jLabel9.setText("Anio de publicacion");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 170, 110, 30));
+
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 510, 40));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 230, 30));
 
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 510, 40));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 110, 30));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 360, 30));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, 110, 30));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 370, 30));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 120, 30));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 370, 30));
 
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 510, 40));
-
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 510, 40));
-
-        label2.setText("UNIDADES DISPO");
-        getContentPane().add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
-
-        label3.setText("GENERO/EDITORIAL");
-        getContentPane().add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
-
-        label4.setText("AUTOR/ARTISTA/DIRECTOR");
-        getContentPane().add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
-
-        label5.setText("TITULO");
-        getContentPane().add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 600));
+        jLabel10.setText("Editorial");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
 
         setSize(new java.awt.Dimension(1087, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       loging loging = new loging ();
+        loging loging = new loging();
         loging.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        menu menu = new menu ();
+        menu menu = new menu();
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            Libro libro = new Libro();
+            libro.setCodigoIdentificacion(jTextField1.getText().trim()); // ID
+            libro.setTitulo(jTextField2.getText().trim());               // Título
+            libro.setUnidadesDisponibles(Integer.parseInt(jTextField3.getText().trim())); // Unidades
+
+            libro.setAutor(jTextField4.getText().trim());                // Autor
+            libro.setNumeroPaginas(Integer.parseInt(jTextField5.getText().trim()));       // Páginas
+            libro.setEditorial(jTextField6.getText().trim());            // Editorial
+            libro.setAnioPublicacion(jTextField7.getText().trim());      // Año
+            libro.setIsbn(jTextField8.getText().trim());                 // ISBN ✅
+
+
+            boolean insertado = libroController.agregarLibro(libro);
+
+            if (insertado) {
+                JOptionPane.showMessageDialog(this, "?Libro insertado correctamente.");
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "❌ Error al insertar el libro.");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "⚠️ Verifica que los campos numéricos sean válidos (unidades, páginas, año).");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "❌ Ocurrió un error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -199,17 +210,17 @@ public class Insertar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    private void limpiarCampos() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText(""); 
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -266,16 +277,24 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.Label label4;
-    private java.awt.Label label5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

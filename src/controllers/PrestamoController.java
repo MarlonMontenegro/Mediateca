@@ -36,5 +36,9 @@ public class PrestamoController {
     public List<Prestamo> listarPrestamos() {
         return prestamoDAO.ListarPrestamos(0); // el parámetro se ignora en tu implementación actual
     }
-
+    
+    public List<Prestamo> listarTodosLosPrestamosConMora() {
+        return prestamoDAO.listarTodosLosPrestamosConMora();
+    }
+    
 }

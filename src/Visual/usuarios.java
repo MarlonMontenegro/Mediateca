@@ -12,6 +12,7 @@ import static model.RolUsuario.ADMIN;
 import static model.RolUsuario.ALUMNO;
 import static model.RolUsuario.PROFESOR;
 import model.Usuario;
+import controllers.AdminController;
 
 /**
  *
@@ -19,7 +20,7 @@ import model.Usuario;
  */
 public class usuarios extends javax.swing.JFrame {
     
-    private final controllers.AdminController adminController = new controllers.AdminController();
+    private final AdminController adminController = new controllers.AdminController();
 
 
     /**
